@@ -35,6 +35,7 @@ mongoose.connect(process.env.MONGO_URI).then(() =>
   console.log("MongoDB connected")
 );
 
+
 const upload = multer({ storage: multer.memoryStorage() });
 
 const s3 = new S3Client({
