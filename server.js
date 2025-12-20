@@ -29,7 +29,7 @@ require("dotenv").config();
 
 const app = express();
 app.use(cors({
-  origin :  [ "https://rag-ai-engine.netlify.app/", "http:localhost:5173" ]
+  origin :  [ "https://rag-ai-engine.netlify.app/", "http://localhost:5173" ]
 }));
 
 app.use(express.json());
