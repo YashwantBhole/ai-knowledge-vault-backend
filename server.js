@@ -26,11 +26,14 @@ const { generateAnswerFromDocs } = require('./utils/geminiChat');
 
 require("dotenv").config();
 
-
 const app = express();
+
 app.use(cors({
-  origin :  [ "https://rag-ai-engine.netlify.app/", "http://localhost:5173" ]
+  origin: ["https://rag-ai-engine.netlify.app", "http://localhost:5173"],
+  methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
+  credentials: true,
 }));
+
 
 app.use(express.json());
 
