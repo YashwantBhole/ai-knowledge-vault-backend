@@ -27,24 +27,24 @@ Backend for the **AI Knowledge Vault**, a powerful RAG system that transforms do
 
 ---
 
-                   ┌───────────────────────────┐
-                   │       Frontend (React)     │
-                   │  - Upload Docs             │
-                   │  - Auth UI                 │
-                   │  - Ask AI UI               │
-                   └──────────────┬────────────┘
-                                  │ API Calls
-                                  ▼
-                   ┌───────────────────────────┐
-                   │     Backend (Express)      │
-                   │  Auth / Upload / RAG Flow  │
-                   │  Extract → Chunk → Embed   │
-                   └──────────────┬────────────┘
-                                  │
-        ┌─────────────────────────┼──────────────────────────┐
-        ▼                         ▼                          ▼
- ┌───────────────┐        ┌───────────────┐           ┌───────────────┐
- │   MongoDB      │        │  S3 / B2       │           │  AI Models     │
- │  (Metadata)    │        │  File Storage  │           │ (Gemini/OpenAI)│
- └───────────────┘        └───────────────┘           └───────────────┘
+                   ┌─────────────────────────┐
+                   │       Frontend (React)  │
+                   │  - Upload Docs          │
+                   │  - Auth UI              │
+                   │  - Ask AI UI            │
+                   └────────────┬────────────┘
+                                │ API Calls
+                                ▼
+                   ┌─────────────────────────┐
+                   │   Backend (Express)     │
+                   │ Auth / Upload / RAG Flow│
+                   │ Extract → Chunk → Embed │
+                   └─────────┬───────────────┘
+                             │
+        ┌────────────────────┼────────────────┐
+        ▼                    ▼                ▼
+ ┌────────────┐     ┌───────────────┐      ┌───────────────┐
+ │  MongoDB   │     │  S3 / B2      │      │ AI Models     │
+ │ (Metadata) │     │  File Storage │      │(Gemini/OpenAI)│
+ └────────────┘     └───────────────┘      └───────────────┘
 
