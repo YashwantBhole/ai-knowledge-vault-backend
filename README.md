@@ -9,7 +9,7 @@ A **production-grade backend** powering the AI Knowledge Vault — a Hybrid Retr
 </div>
 
 ---
-## 🔗 Related Project
+# 🔗 Related Project
 - Frontend Repository: https://github.com/YashwantBhole/ai-knowledge-vault-frontend
 - Live App: https://rag-ai-engine.netlify.app
   
@@ -172,7 +172,7 @@ npm run dev
 
 ---
 
-🌐 Deployment (Render)
+# 🌐 Deployment (Render)
 
 ### Settings:
 - **Root Directory:** `backend`
