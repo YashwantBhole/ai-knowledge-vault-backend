@@ -4,8 +4,6 @@
 
 A **production-grade backend** powering the AI Knowledge Vault — a Hybrid Retrieval-Augmented Generation (RAG) system that converts uploaded documents into a semantic, searchable knowledge base with grounded AI answers.
 
-<img src="../frontend/public/screenshots/ai-banner.png" width="100%" />
-
 </div>
 
 ---
