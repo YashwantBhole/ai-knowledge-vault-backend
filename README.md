@@ -1,88 +1,90 @@
 <div align="center">
 
-# 🧠 AI Knowledge Vault — Backend (Node.js + Express)
+# 🧠 AI Knowledge Vault — Backend (Node.js • Express • RAG Engine)
 
-A **production-grade backend** powering the AI Knowledge Vault — a Hybrid Retrieval-Augmented Generation (RAG) system that converts uploaded documents into a semantic, searchable knowledge base with grounded AI answers.
+A **production-ready backend** powering the AI Knowledge Vault — a Hybrid Retrieval-Augmented Generation (RAG) system that converts uploaded documents into a semantic, searchable knowledge base with grounded AI answers.
 
 </div>
 
 ---
-# 🔗 Related Project
-- Frontend Repository: https://github.com/YashwantBhole/ai-knowledge-vault-frontend
-- Live App: https://rag-ai-engine.netlify.app
-  
----
 
-# 📌 Overview
+## 🔗 Related Repositories
 
-This backend forms the core of the **AI Knowledge Vault**, managing:
-
-- User authentication  
-- File uploads (PDF, DOCX, TXT, images)  
-- Text extraction (including OCR)  
-- Chunk creation  
-- Embedding generation  
-- Vector search  
-- Grounded AI responses using the RAG pipeline  
-
-It is built using **Node.js, Express, MongoDB, and Google Gemini models** for embeddings & generation.
+- **Frontend App:** https://github.com/YashwantBhole/ai-knowledge-vault-frontend  
+- **Live App:** https://rag-ai-engine.netlify.app  
 
 ---
 
-# 🚀 Key Features
+## 📌 Overview
+
+This repository contains the **backend API** for AI Knowledge Vault.  
+It is responsible for:
+
+- 🔐 Authentication & secure user isolation  
+- 📁 File uploads (PDF, DOCX, TXT, images)  
+- 📝 Text extraction (including OCR)  
+- ✂️ Chunking & preprocessing  
+- 🧠 Embedding generation  
+- 🔍 Vector search  
+- 🤖 Grounded AI responses via a RAG pipeline  
+
+Built using **Node.js, Express, MongoDB** and **Gemini models** for embeddings & generation.
+
+---
+
+## 🚀 Key Features
 
 ### 🔐 Authentication & User Isolation
-- Secure JWT Auth  
-- Files & embeddings stored per user  
-- Prevents cross-user data access  
+✔ JWT-based authentication  
+✔ Per-user file & embedding segregation  
+✔ Prevents cross-user data access  
 
 ### 📁 File Handling
-- Upload PDFs, DOCX, TXT, PNG, JPG  
-- Store in Backblaze B2 (S3 compatible)  
-- Fetch downloadable file URLs  
+✔ Upload **PDF / DOCX / TXT / PNG / JPG**  
+✔ Stored securely in **Backblaze B2 (S3 compatible)**  
+✔ Signed URLs for secure download  
 
 ### 📝 Text Extraction
-- `pdf-parse` for PDFs  
-- `mammoth` for DOCX  
-- `tesseract.js` for OCR on images  
+✔ `pdf-parse` for PDFs  
+✔ `mammoth` for DOCX  
+✔ `tesseract.js` OCR for images  
 
 ### ✂️ Chunking Engine
-- Overlapping semantic chunks  
-- Optimized for vector retrieval  
-- Configurable chunk size  
+✔ Overlapping semantic chunks  
+✔ Configurable sizes  
+✔ Optimized for vector retrieval  
 
-### 🧠 Embedding Generation
-- Uses **Gemini embeddings**  
-- Stores vectors in MongoDB  
-- Cosine similarity search  
-
-### 🔍 Vector Search
-- Compare embeddings  
-- Retrieve top-k relevant chunks  
+### 🧠 Embeddings & Vector Search
+✔ Gemini embedding model  
+✔ Stored as vectors in MongoDB  
+✔ Cosine similarity search  
 
 ### 🤖 Ask-AI (RAG Pipeline)
-- Fetch relevant chunks  
-- Clean, structured prompting  
-- Context-aware grounded answers  
+✔ Retrieve top-K matches  
+✔ Construct contextual prompts  
+✔ Generate grounded responses  
+✔ Include reference context  
 
 ---
 
-# 🏗 Core Architecture
+## 🏗️ Architecture
+
 
 ```
 Client → Express API → Controllers → RAG Pipeline → Gemini → Response
 ```
 
-### Flow Summary:
 
-1. Upload → stored in B2  
-2. Extract text  
-3. Chunk text  
-4. Generate embeddings  
-5. Store vectors  
-6. Ask AI → retrieve → generate answer  
+### Request Flow
+1️⃣ Upload file → stored in B2  
+2️⃣ Extract text  
+3️⃣ Create chunks  
+4️⃣ Generate embeddings  
+5️⃣ Store vectors  
+6️⃣ Ask AI → retrieve → answer  
 
 ---
+
 
 # 🔐 Environment Variables
 
@@ -99,7 +101,7 @@ B2_BUCKET=your_bucket_name
 
 AI_API_KEY=your_gemini_api_key
 ```
-
+> 🔎 Never commit `.env` files — keys must remain secret.
 ---
 
 # 📡 API Endpoints
