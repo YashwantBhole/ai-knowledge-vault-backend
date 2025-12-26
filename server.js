@@ -24,9 +24,15 @@ const { getEmbedding } = require('./utils/geminiEmbeddings')
 const { cosineSim } = require('./utils/similarity');
 const { generateAnswerFromDocs } = require('./utils/geminiChat');
 
+const { swaggerUi, swaggerSpec } = require('./swagger');
+const swaggerJSDoc = require("swagger-jsdoc");
+
 require("dotenv").config();
 
 const app = express();
+
+app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 
 app.use(cors({
   origin: ["https://rag-ai-engine.netlify.app", "http://localhost:5173"],
@@ -54,7 +60,37 @@ const s3 = new S3Client({
   forcePathStyle: true,
 });
 
-// SIGNUP
+// SIGNUP ROUTE + SWAGGER
+/**
+ * @swagger
+ * /api/signup:
+ *   post:
+ *     summary: Register a new user
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - name
+ *               - email
+ *               - password
+ *             properties:
+ *               name:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: User created successfully
+ *       400:
+ *         description: Validation or existing user error
+ */
+
 app.post("/api/signup", async (req, res) => {
   const { name, email, password } = req.body;
   if (!name?.trim() || !email?.trim() || !password?.trim()) {
@@ -69,12 +105,36 @@ app.post("/api/signup", async (req, res) => {
   }
 });
 
-// LOGIN
+
+// LOGIN ROUTE + SWAGGER
+/**
+ * @swagger
+ * /api/login:
+ *   post:
+ *     summary: Login user
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Successful login
+ *       401:
+ *         description: Invalid credentials
+ */
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
-if (!email?.trim() || !password?.trim()) {
-  return res.status(400).json({ message: "All fields are required" });
-}
+  if (!email?.trim() || !password?.trim()) {
+    return res.status(400).json({ message: "All fields are required" });
+  }
 
   try {
     const user = await User.findOne({ email });
@@ -96,7 +156,37 @@ if (!email?.trim() || !password?.trim()) {
   }
 });
 
-// UPLOAD FILE
+
+
+
+// UPLOAD ROUTE + SWAGGER
+/**
+ * @swagger
+ * /api/upload:
+ *   post:
+ *     summary: Upload a document file
+ *     tags: [Files]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               file:
+ *                 type: string
+ *                 format: binary
+ *     responses:
+ *       200:
+ *         description: File uploaded successfully
+ *       401:
+ *         description: Unauthorized - token missing or invalid
+ *       400:
+ *         description: File not provided
+ */
+
 app.post("/api/upload", auth, upload.single("file"), async (req, res) => {
   const file = req.file;
   if (!file) {
