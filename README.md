@@ -124,6 +124,38 @@ AI_API_KEY=your_gemini_api_key
 
 ---
 
+## 📘 API Documentation (Swagger UI)
+
+The backend is fully documented using **Swagger / OpenAPI 3.0**.
+
+## 🔗 Local
+http://localhost:5000/api/docs
+
+## 🔗 Production
+https://ai-knowledge-vault-backend.onrender.com/api/docs
+
+
+Swagger UI allows you to:
+
+- View all API endpoints  
+- Inspect request / response formats  
+- See error codes  
+- Authenticate using JWT  
+- Execute requests directly from the browser  
+
+### 🔐 Authentication in Swagger
+
+Protected routes use **Bearer Token (JWT)** authentication.
+
+To authorize:
+
+1️⃣ Login via `/api/login`  
+2️⃣ Copy the returned token  
+3️⃣ Click **Authorize** in Swagger  
+4️⃣ Paste token in this format:
+
+---
+
 ## RAG Processing
 
 ### 1️⃣ Extract Text  

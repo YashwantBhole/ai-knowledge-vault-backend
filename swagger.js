@@ -24,7 +24,7 @@ const options = {
                 description: "Lcoal Server "
             },
             {
-                url: "https://ai-knowledge-vault-backend.onrender.com/",
+                url: "https://ai-knowledge-vault-backend.onrender.com",
                 description: "Production Server"
             }
         ]

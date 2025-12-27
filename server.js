@@ -25,7 +25,6 @@ const { cosineSim } = require('./utils/similarity');
 const { generateAnswerFromDocs } = require('./utils/geminiChat');
 
 const { swaggerUi, swaggerSpec } = require('./swagger');
-const swaggerJSDoc = require("swagger-jsdoc");
 
 require("dotenv").config();
 
