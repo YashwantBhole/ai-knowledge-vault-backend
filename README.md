@@ -197,7 +197,7 @@ POST /api/ask-docs
 
 ## 📥 Prerequisites
 - Install Docker Desktop → https://www.docker.com
-- Install Docker Desktop → https://www.docker.com
+- Ensure your .env file exists in the backend root (⚠️ do not commit this file)
 
 Example:
 ```bash
