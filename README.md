@@ -189,6 +189,107 @@ POST /api/ask-docs
 
 ---
 
+### 🐳 Run with Docker
+
+>The backend is fully containerized using Docker & Docker Compose, so you can run it anywhere in one command.
+
+>This setup supports both MongoDB Atlas and local Docker MongoDB — simply switch the MONGO_URI in your .env.
+
+## 📥 Prerequisites
+- Install Docker Desktop → https://www.docker.com
+- Install Docker Desktop → https://www.docker.com
+
+Example:
+```bash
+PORT=5000
+MONGO_URI=your_mongodb_atlas_uri
+JWT_SECRET=your_secret
+B2_KEY_ID=xxxx
+B2_APPLICATION_KEY=xxxx
+B2_BUCKET=xxxx
+AI_API_KEY=xxxx       
+```   
+>Your .env is not copied into the image — environment variables are injected securely at runtime.
+
+---
+
+## Option 1 — Run Backend Using MongoDB Atlas (Recommended)
+>This runs only the backend container and connects to MongoDB Atlas.
+
+- Build the image
+```bash
+docker build -t ai-knowledge-vault-backend .
+```
+
+- Run the container
+```bash
+docker run --env-file .env -p 5000:5000 ai-knowledge-vault-backend
+```
+
+- Your API is now live at:
+```bash
+http://localhost:5000
+http://localhost:5000/api/docs   ← Swagger UI
+```
+
+## 🧩 Option 2 — Run via Docker Compose (One-Command Startup)
+
+- docker-compose automatically loads your .env file and starts the API container.
+```bash
+docker-compose up --build
+```
+
+- Stop the containers:
+```bash
+docker-compose down
+```
+>This option is great for local development and future scaling (e.g., adding Redis, queues, etc.)
+
+## 🔍 Verify Everything is Running
+
+Once the container starts, you should see logs like:
+```bash
+Server running on 5000
+MongoDB connected
+```
+---
+
+### 🧠 Why Docker?
+
+Using Docker ensures:
+
+✔ Consistent runtime everywhere
+✔ Zero setup for collaborators
+✔ Secure env variable handling
+✔ Easier deployment
+✔ Cloud-ready architecture
+
+This follows 12-factor app principles — configuration stays outside the codebase.
+
+---
+
+### 🧹 Useful Docker Commands
+List running containers:
+```bash
+docker ps
+```
+Stop a container:
+```bash
+docker stop <container_id>
+```
+
+Remove unused container:
+```bash
+docker container prune
+```
+
+Remove unused images:
+```bash
+docker image prune
+```
+---
+
+
 # 🛠 Run Locally
 
 ### Install

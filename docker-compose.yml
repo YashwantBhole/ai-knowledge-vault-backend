@@ -1,0 +1,7 @@
+services:
+  api:
+    build: .
+    container_name: ai-knowledge-vault-backend
+    ports:
+      - "5000:5000"
+    env_file: .env
